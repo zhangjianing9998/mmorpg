@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace JIANING
 {
-    public class SocketComponent : JIANINGComponent
+    public class SocketComponent : JIANINGBaseComponent
     {
-        
+        public override void Shutdown()
+        {
+        }
     }
 }

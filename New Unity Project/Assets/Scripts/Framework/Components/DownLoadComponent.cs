@@ -3,18 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace JIANING
 {
-    public class DownLoadComponent : JIANINGComponent
+    public class DownLoadComponent : JIANINGBaseComponent
     {
-        // Start is called before the first frame update
-        void Start()
+        public override void Shutdown()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

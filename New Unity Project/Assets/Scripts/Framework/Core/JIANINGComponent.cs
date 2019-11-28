@@ -9,12 +9,29 @@ namespace JIANING
     /// </summary>
     public class JIANINGComponent : MonoBehaviour
     {
+        /// <summary>
+        /// 组件实例编号
+        /// </summary>
+        private int m_InstanceId;
+
+      
         private void Awake()
         {
+            m_InstanceId = GetInstanceID();
+
+          
             OnAwake();
         }
 
+        public int InstanceID
+        {
+            get { return m_InstanceId; }
+        }
+
+
         protected virtual void OnAwake() { }
+
+        
     }
 
    

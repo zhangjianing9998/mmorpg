@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace JIANING
 {
-    public class SceneComponent : JIANINGComponent
+    public class SceneComponent : JIANINGBaseComponent
     {
-       
+        public override void Shutdown()
+        {
+        }
     }
 }

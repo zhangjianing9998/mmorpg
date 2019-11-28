@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace JIANING
 {
-    public class DataTableComponent : JIANINGComponent
+    public class DataTableComponent : JIANINGBaseComponent
     {
-        
+        public override void Shutdown()
+        {
+        }
     }
 }
