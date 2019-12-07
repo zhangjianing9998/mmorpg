@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace JIANING
 {
+    
     /// <summary>
     /// 事件管理器
     /// </summary>
@@ -18,12 +19,24 @@ namespace JIANING
         {
             base.OnAwake();
             m_EventManager = new EventManager();
+            SocketEvent = m_EventManager.SocketEvent;
+            CommonEvent = m_EventManager.CommonEvent;
         }
 
         public override void Shutdown()
         {
             m_EventManager.Dispose();
-            m_EventManager = null;
         }
+
+        /// <summary>
+        /// Socket事件
+        /// </summary>
+        public SocketEvent SocketEvent;
+
+        /// <summary>
+        /// 通用事件
+        /// </summary>
+        public CommonEvent CommonEvent;
+
     }
 }

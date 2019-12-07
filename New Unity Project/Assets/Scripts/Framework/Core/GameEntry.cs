@@ -212,7 +212,7 @@ namespace JIANING
             Resource = GetBaseComponent<ResourceComponent>();
             GameObj = GetBaseComponent<GameObjComponent>();
             Download = GetBaseComponent<DownLoadComponent>();
-
+            Debug.Log("初始化组件完成");
         }
         #endregion
         #endregion
@@ -253,9 +253,15 @@ namespace JIANING
 
         #endregion
 
-        private void Start()
+        private void Awake()
         {
             InitBaseComponents();
+        }
+
+
+        private void Start()
+        {
+            
         }
 
         private void Update()
@@ -268,7 +274,6 @@ namespace JIANING
 
          
         }
-
 
         private void OnDestroy()
         {
