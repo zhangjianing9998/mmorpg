@@ -5,7 +5,7 @@ namespace JIANING
 {
     public class TimeComponent : JIANINGBaseComponent, IUpdataComponent
     {
-        
+
 
         protected override void OnAwake()
         {
@@ -38,6 +38,7 @@ namespace JIANING
         internal void RemoveTimeAction(TimeAction action)
         {
             m_TimeManager.RemoveTimeAction(action);
+            GameEntry.Pool.EnqueueClassObject(action);
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace JIANING
         /// <returns></returns>
         public TimeAction CreateTimeAction()
         {
-            return new TimeAction();
+           return GameEntry.Pool.DequeueClassObject<TimeAction>();
         }
         #endregion
 

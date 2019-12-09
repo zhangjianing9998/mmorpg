@@ -20,7 +20,7 @@ namespace JIANING
         }
 
         /// <summary>
-        /// 当前运行事件
+        /// 当前运行时间
         /// </summary>
         private float m_CurrRunTime;
 
@@ -71,6 +71,8 @@ namespace JIANING
             m_OnStart = OnStart;
             m_OnUpdate = OnUpdate;
             m_OnComplete = OnComplete;
+            m_CurrLoop = 0;
+
             return this;
         }
 
@@ -81,6 +83,7 @@ namespace JIANING
 
             //2.设置当前运行的时间
             m_CurrRunTime = Time.time;
+
         }
 
         public void Pause()
@@ -96,6 +99,7 @@ namespace JIANING
 
             //把自己从定时器链表中移除
             GameEntry.Time.RemoveTimeAction(this);
+
         }
 
 
@@ -122,7 +126,7 @@ namespace JIANING
 
                 //以下代码 间隔interval时间 执行一次
                 m_OnUpdate?.Invoke(m_Loop - m_CurrLoop);
-
+              
                 if (m_Loop > -1)
                 {
                     m_CurrLoop++;

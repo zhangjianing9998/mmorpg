@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace JIANING
 {
-    public class TimeManager : ManagerBase , System.IDisposable
+    public class TimeManager : ManagerBase, System.IDisposable
     {
         /// <summary>
         /// 定时器链表
@@ -21,7 +21,10 @@ namespace JIANING
         /// <param name="action"></param>
         internal void RegisterTimeAction(TimeAction action)
         {
+
             m_TimeAction.AddLast(action);
+
+
         }
 
         /// <summary>

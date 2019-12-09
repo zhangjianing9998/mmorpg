@@ -14,14 +14,17 @@ public class TestTime : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             TimeAction action = GameEntry.Time.CreateTimeAction();
-            action.Init(5f, 1, 8,
-                () => {
-                    Debug.Log("start");
+            action.Init(1f, 1, 8,
+                () =>
+                {
+                    Debug.Log("start  延迟时间 = 1 间隔时间 = 1 循环次数 = 8" );
                 },
-                (int loop) => {
+                (int loop) =>
+                {
                     Debug.Log("update loop = " + loop);
                 },
-                () =>{
+                () =>
+                {
                     Debug.Log("complete");
                 }
                 ).Run();
