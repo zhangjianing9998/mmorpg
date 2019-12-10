@@ -160,7 +160,6 @@ namespace JIANING
 #if UNITY_EDITOR
                     Type t = null;
 #endif
-
                     queueCount = queue.Count;
 
                     //用于释放的时候 判断常驻数量
@@ -175,24 +174,18 @@ namespace JIANING
                         t = obj.GetType();
                         InspectorDic[t]--;
 #endif
-
                     }
 
                     if (queueCount == 0)
                     {
-
-                     
-
 #if UNITY_EDITOR
                         if (t != null)
                         {
                             InspectorDic.Remove(t);
                         }
-
 #endif
                     }
                 }
-
                 //GC 整个项目中，有一处GC即可
                 GC.Collect();
 

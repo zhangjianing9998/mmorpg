@@ -23,6 +23,11 @@ namespace JIANING
             OnAwake();
         }
 
+        private void Start()
+        {
+            OnStart();
+        }
+
         public int InstanceID
         {
             get { return m_InstanceId; }
@@ -30,6 +35,7 @@ namespace JIANING
 
 
         protected virtual void OnAwake() { }
+        protected virtual void OnStart() { }
 
         
     }

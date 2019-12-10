@@ -13,6 +13,7 @@ namespace JIANING
             GameEntry.RegisterBaseComponent(this);
         }
 
+
         /// <summary>
         /// 关闭方法
         /// </summary>

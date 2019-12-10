@@ -1,11 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 namespace JIANING
 {
-    public class FsmManager : ManagerBase
+    /// <summary>
+    /// 状态机管理器
+    /// </summary>
+    public class FsmManager : ManagerBase,IDisposable
     {
-    
-        
+
+        /// <summary>
+        /// 状态机字典
+        /// </summary>
+        private Dictionary<int, FsmBase> m_FsmDic;
+
+        public FsmManager()
+        {
+            m_FsmDic = new Dictionary<int, FsmBase>();
+        }
+
+
+        /// <summary>
+        /// 创建状态机
+        /// </summary>
+        /// <typeparam name="T">拥有者的类型</typeparam>
+        /// <param name="fsmId">状态机编号</param>
+        /// <param name="owner">拥有者</param>
+        /// <param name="states">状态数组</param>
+        /// <returns></returns>
+        public Fsm<T> Create<T>(int fsmId, T owner, FsmState<T>[] states) where T : class
+        {
+            Fsm<T> fsm = new Fsm<T>(fsmId, owner, states);
+
+            m_FsmDic[fsmId] = fsm;
+
+            return fsm;
+        }
+
+        /// <summary>
+        /// 销毁状态机
+        /// </summary>
+        /// <param name="fsmId"></param>
+        public void DestoryFsm(int fsmId)
+        {
+            FsmBase fsm = null;
+            if (m_FsmDic.TryGetValue(fsmId, out fsm))
+            {
+                fsm.Shutdown();
+                m_FsmDic.Remove(fsmId);
+            }
+         
+        }
+
+        public void Dispose()
+        {
+            foreach (KeyValuePair<int,FsmBase> item in m_FsmDic)
+            {
+                item.Value.Shutdown();
+            }
+            m_FsmDic.Clear();
+        }
     }
 }
