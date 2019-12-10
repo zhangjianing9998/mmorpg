@@ -11,9 +11,17 @@ namespace JIANING
             private set;
         }
 
+        public GameObjectPool GameObjectPool
+        {
+            get;
+            private set;
+        }
+
+
         public PoolManager()
         {
             ClassObjectPool = new ClassObjectPool();
+            GameObjectPool = new GameObjectPool();
         }
 
         /// <summary>
@@ -29,6 +37,7 @@ namespace JIANING
         public void Dispose()
         {
             ClassObjectPool.Dispose();
+            GameObjectPool.Dispose();
         }
     }
 }

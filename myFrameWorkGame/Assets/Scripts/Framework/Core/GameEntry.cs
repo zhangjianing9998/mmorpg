@@ -255,13 +255,13 @@ namespace JIANING
 
         private void Awake()
         {
-            InitBaseComponents();
+            
         }
 
 
         private void Start()
         {
-            
+            InitBaseComponents();
         }
 
         private void Update()

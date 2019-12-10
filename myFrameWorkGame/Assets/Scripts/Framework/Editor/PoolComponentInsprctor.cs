@@ -11,6 +11,9 @@ namespace JIANING
         //释放间隔属性
         private SerializedProperty m_ClearInterval = null;
 
+        //释放间隔属性
+        private SerializedProperty m_GameObjectPoolGroups = null;
+
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -34,28 +37,31 @@ namespace JIANING
             GUILayout.Label("常驻数量", GUILayout.Width(50));
             GUILayout.EndHorizontal();
 
-            if (component == null
-                || component.PoolManager == null
+            if (component != null
+                && component.PoolManager != null
                 )
             {
-                return;
+                foreach (var item in component.PoolManager.ClassObjectPool.InspectorDic)
+                {
+                    GUILayout.BeginHorizontal("box");
+                    GUILayout.Label(item.Key.Name);
+                    GUILayout.Label(item.Value.ToString(), GUILayout.Width(50));
+
+                    int key = item.Key.GetHashCode();
+                    byte resideCount;
+                    component.PoolManager.ClassObjectPool.ClassObjectCount.TryGetValue(key, out resideCount);
+
+                    GUILayout.Label(resideCount.ToString(), GUILayout.Width(50));
+                    GUILayout.EndHorizontal();
+                }
             }
 
-            foreach (var item in component.PoolManager.ClassObjectPool.InspectorDic)
-            {
-                GUILayout.BeginHorizontal("box");
-                GUILayout.Label(item.Key.Name);
-                GUILayout.Label(item.Value.ToString(), GUILayout.Width(50));
+           
 
-                int key = item.Key.GetHashCode();
-                byte resideCount;
-                component.PoolManager.ClassObjectPool.ClassObjectCount.TryGetValue(key,out resideCount);
-
-                GUILayout.Label(resideCount.ToString(), GUILayout.Width(50));
-                GUILayout.EndHorizontal();
-            }
+            EditorGUILayout.PropertyField(m_GameObjectPoolGroups,true);
 
 
+            serializedObject.ApplyModifiedProperties();
             //重绘
             Repaint();
 
@@ -63,7 +69,9 @@ namespace JIANING
 
         private void OnEnable()
         {
+            //建立属性关系
             m_ClearInterval = serializedObject.FindProperty("m_ClearInterval");
+            m_GameObjectPoolGroups = serializedObject.FindProperty("m_GameObjectPoolGroups");
 
             serializedObject.ApplyModifiedProperties();
         }

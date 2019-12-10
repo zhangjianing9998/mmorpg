@@ -19,6 +19,8 @@ namespace JIANING
             PoolManager = new PoolManager();
             GameEntry.RegisterUpdateComponent(this);
             m_NextRunTime = Time.time;
+
+            InitGameObjectPool();
         }
 
         #region Dequeue 取出一个对象
@@ -91,6 +93,42 @@ namespace JIANING
         }
 
 
+        #region 游戏物体对象池
 
+        /// <summary>
+        /// 对象池的分组
+        /// </summary>
+        [SerializeField]
+        private GameObjectPoolEntity[] m_GameObjectPoolGroups;
+
+        /// <summary>
+        /// 初始化游戏物体对象池
+        /// </summary>
+        public void InitGameObjectPool()
+        {
+            StartCoroutine(PoolManager.GameObjectPool.Init(m_GameObjectPoolGroups, transform));
+        }
+
+        /// <summary>
+        /// 从对象池中获取对象
+        /// </summary>
+        /// <param name="poolId"></param>
+        /// <param name="prefab"></param>
+        /// <param name="onComplete"></param>
+        public void GameObjectSpawn(byte poolId, Transform prefab, System.Action<Transform> onComplete)
+        {
+            PoolManager.GameObjectPool.Spawn(poolId,prefab,onComplete);
+        }
+
+        /// <summary>
+        /// 对象回池
+        /// </summary>
+        /// <param name="poolId"></param>
+        /// <param name="instance"></param>
+        public void GameObjectDespawn(byte poolId, Transform instance)
+        {
+            PoolManager.GameObjectPool.Despawn(poolId,instance);
+        }
+        #endregion
     }
 }
