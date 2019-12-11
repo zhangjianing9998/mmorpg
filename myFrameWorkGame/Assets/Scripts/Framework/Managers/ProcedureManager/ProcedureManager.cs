@@ -31,6 +31,15 @@ namespace JIANING
         private Fsm<ProcedureManager> m_CurrFsm;
 
         /// <summary>
+        /// 当前流程状态机
+        /// </summary>
+        public Fsm<ProcedureManager> CurrFsm {
+            get {
+                return m_CurrFsm;
+            }
+        }
+
+        /// <summary>
         /// 当前流程状态
         /// </summary>
         public ProcedureState CurrProcedureState
@@ -40,6 +49,7 @@ namespace JIANING
                 return (ProcedureState)m_CurrFsm.CurrStateType;
             }
         }
+
 
         /// <summary>
         /// 当前的流程

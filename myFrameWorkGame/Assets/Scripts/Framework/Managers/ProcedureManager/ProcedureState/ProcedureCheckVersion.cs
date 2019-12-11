@@ -7,6 +7,8 @@ namespace JIANING
     {
         public override void OnEnter()
         {
+           Debug.Log( GameEntry.Procedure.GetData<int>("code"));
+           Debug.Log( GameEntry.Procedure.GetData<string>("name"));
             Debug.Log("ProcedureCheckVersion Enter");
         }
 

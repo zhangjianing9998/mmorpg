@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4267112829948dbaf71001cbebccfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ClearInterval: 60
+  m_ClearInterval: 20
   m_GameObjectPoolGroups:
   - PoolId: 1
     PoolName: role

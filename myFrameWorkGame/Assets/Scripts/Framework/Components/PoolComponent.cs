@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace JIANING
@@ -62,6 +63,78 @@ namespace JIANING
         #endregion
 
 
+        #region 变量对象池
+
+        /// <summary>
+        /// 变量对象池锁
+        /// </summary>
+        private object m_VarObjectLock = new object();
+
+#if UNITY_EDITOR
+        /// <summary>
+        /// 监视器面板变量池信息
+        /// </summary>
+        public Dictionary<Type, int> VarObjectInspectorDic = new Dictionary<Type, int>();
+#endif
+
+        /// <summary>
+        /// 取出一个变量对象
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T DequeueVarObject<T>() where T : VariableBase, new()
+        {
+            lock (m_VarObjectLock)
+            {
+                T item = DequeueClassObject<T>();
+#if UNITY_EDITOR
+                Type t = item.GetType();
+                if (VarObjectInspectorDic.ContainsKey(t))
+                {
+                    VarObjectInspectorDic[t]++;
+                }
+                else
+                {
+                    VarObjectInspectorDic[t] = 1;
+                }
+#endif
+
+                return item;
+            }
+
+
+        }
+        /// <summary>
+        /// 变量对象回池
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="item"></param>
+        public void EnqueueVarObject<T>(T item) where T : VariableBase
+        {
+            lock (m_VarObjectLock)
+            {
+                EnqueueClassObject(item);
+#if UNITY_EDITOR
+                Type t = item.GetType();
+                if (VarObjectInspectorDic.ContainsKey(t))
+                {
+                    VarObjectInspectorDic[t]--;
+                    if (VarObjectInspectorDic[t] == 0)
+                    {
+                        VarObjectInspectorDic.Remove(t);
+                    }
+                }
+             
+#endif
+
+
+            }
+        }
+
+
+
+        #endregion
+
         public override void Shutdown()
         {
             PoolManager.Dispose();
@@ -117,7 +190,7 @@ namespace JIANING
         /// <param name="onComplete"></param>
         public void GameObjectSpawn(byte poolId, Transform prefab, System.Action<Transform> onComplete)
         {
-            PoolManager.GameObjectPool.Spawn(poolId,prefab,onComplete);
+            PoolManager.GameObjectPool.Spawn(poolId, prefab, onComplete);
         }
 
         /// <summary>
@@ -127,7 +200,7 @@ namespace JIANING
         /// <param name="instance"></param>
         public void GameObjectDespawn(byte poolId, Transform instance)
         {
-            PoolManager.GameObjectPool.Despawn(poolId,instance);
+            PoolManager.GameObjectPool.Despawn(poolId, instance);
         }
         #endregion
     }
