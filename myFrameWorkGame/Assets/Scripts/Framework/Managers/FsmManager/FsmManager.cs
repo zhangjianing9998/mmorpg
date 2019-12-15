@@ -55,10 +55,12 @@ namespace JIANING
 
         public void Dispose()
         {
-            foreach (KeyValuePair<int,FsmBase> item in m_FsmDic)
+            var enumerator = m_FsmDic.GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                item.Value.Shutdown();
+                enumerator.Current.Value.Shutdown();
             }
+
             m_FsmDic.Clear();
         }
     }

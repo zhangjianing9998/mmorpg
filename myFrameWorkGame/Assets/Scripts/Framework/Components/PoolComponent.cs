@@ -22,6 +22,22 @@ namespace JIANING
             m_NextRunTime = Time.time;
 
             InitGameObjectPool();
+            
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            InitClassSetReside();
+        }
+
+        /// <summary>
+        /// 初始化常用类常驻数量
+        /// </summary>
+        private void InitClassSetReside()
+        {
+            GameEntry.Pool.SetClassObjectResideCount<HttpRoutine>(3);
+            GameEntry.Pool.SetClassObjectResideCount<Dictionary<string,object>>(3);
         }
 
         #region Dequeue 取出一个对象
@@ -124,7 +140,7 @@ namespace JIANING
                         VarObjectInspectorDic.Remove(t);
                     }
                 }
-             
+
 #endif
 
 

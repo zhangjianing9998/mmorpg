@@ -283,5 +283,8 @@ namespace JIANING
                 curr.Value.Shutdown();
             }
         }
+
+        public static void Log(object str, object str1) { }
+
     }
 }

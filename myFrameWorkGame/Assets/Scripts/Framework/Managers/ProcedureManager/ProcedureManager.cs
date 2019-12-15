@@ -107,7 +107,8 @@ namespace JIANING
 
         public void Dispose()
         {
-            m_CurrFsm.Shutdown();
+
+
         }
     }
 }

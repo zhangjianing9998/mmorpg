@@ -147,14 +147,15 @@ namespace JIANING
             lock (m_ClassObjectPoolDic)
             {
 
-
                 Debug.Log("释放类对象池");
-                List<int> lst = new List<int>(m_ClassObjectPoolDic.Keys);
-                int lstCount = lst.Count;
+
                 int queueCount = 0;//队列的数量
-                for (int i = 0; i < lstCount; i++)
+                //1.定义迭代器
+                var enumerator = m_ClassObjectPoolDic.GetEnumerator();
+                while (enumerator.MoveNext())
                 {
-                    int key = lst[i];
+                    int key = enumerator.Current.Key;
+
                     Queue<object> queue = m_ClassObjectPoolDic[key];
 
 #if UNITY_EDITOR
@@ -185,7 +186,9 @@ namespace JIANING
                         }
 #endif
                     }
+
                 }
+
                 //GC 整个项目中，有一处GC即可
                 GC.Collect();
 
