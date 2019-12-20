@@ -29,8 +29,7 @@ public class AssetBundleWindow : EditorWindow
     private BuildTarget target = BuildTarget.iOS;
     private int buildTargetIndex = 2;
 #endif
-    private int buildTargetIndex = 0; //打包的平台索引
-    private BuildTarget target = BuildTarget.StandaloneWindows;
+
     private Vector2 pos;
 
     /// <summary>

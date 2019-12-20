@@ -10,18 +10,18 @@ namespace JIANING
     {
         private SerializedProperty m_CurrLanguage = null;
 
-        public override void OnInspectorGUI()
-        {
-            serializedObject.Update();
-            EditorGUILayout.PropertyField(m_CurrLanguage);
-            serializedObject.ApplyModifiedProperties();
-        }
+        //public override void OnInspectorGUI()
+        //{
+        //    serializedObject.Update();
+        //    EditorGUILayout.PropertyField(m_CurrLanguage);
+        //    serializedObject.ApplyModifiedProperties();
+        //}
 
-        private void OnEnable()
-        {
-            //建立属性关系
-            m_CurrLanguage = serializedObject.FindProperty("m_CurrLanguage");
-            serializedObject.ApplyModifiedProperties();
-        }
+        //private void OnEnable()
+        //{
+        //    //建立属性关系
+        //    m_CurrLanguage = serializedObject.FindProperty("m_CurrLanguage");
+        //    serializedObject.ApplyModifiedProperties();
+        //}
     }
 }

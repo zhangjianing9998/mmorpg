@@ -531,7 +531,9 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    1: HOTFIX_ENABLE
+    1: DISABLE_ASSETBUNDLE
+    4: DISABLE_ASSETBUNDLE
+    7: DISABLE_ASSETBUNDLE
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

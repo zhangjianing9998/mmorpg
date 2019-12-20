@@ -38,23 +38,40 @@ public class TestProcedure : MonoBehaviour
         //    //a.Release();
         //}
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            GameEntry.Procedure.SetDate("code" , 12);
-            GameEntry.Procedure.SetDate("name" , "家宁");
-            Debug.Log("当前的流程 = " + GameEntry.Procedure.CurrProcedure);
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    GameEntry.Procedure.SetDate("code" , 12);
+        //    GameEntry.Procedure.SetDate("name" , "家宁");
+        //    Debug.Log("当前的流程 = " + GameEntry.Procedure.CurrProcedure);
 
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            GameEntry.Procedure.ChangeState(ProcedureState.CheckVersion);
+        //}
+        //if (Input.GetKeyDown(KeyCode.B))
+        //{
+        //    GameEntry.Procedure.ChangeState(ProcedureState.CheckVersion);
 
-        }
+        //}
         if (Input.GetKeyDown(KeyCode.C))
         {
-            GameEntry.Procedure.ChangeState(ProcedureState.EnterGame);
+            GameEntry.Procedure.ChangeState(ProcedureState.Preload);
 
 
         }
+
+
+        //DBModel
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    ChapterDBModel dr = new ChapterDBModel();
+        //    dr.LoadData();
+
+        //    List<ChapterEntity> lst = dr.GetList();
+        //    int len = lst.Count;
+        //    for (int i = 0; i < len; i++)
+        //    {
+        //        ChapterEntity en = lst[i];
+
+        //        Debug.LogError(en.ChapterName);
+        //    }
+        //}
     }
 }

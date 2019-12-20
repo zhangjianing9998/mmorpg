@@ -40,8 +40,16 @@ namespace JIANING
         /// </summary>
         public void LoadData()
         {
-            GameEntry.DataTable.DataTableManager.TotalTableCount++;
 
+            byte[] buffer = GameEntry.Resource.GetFileBuffer(string.Format("{0}/Download/DataTable/{1}.bytes", GameEntry.Resource.LocalFilePath, DataTableName)); 
+            using (MMO_MemoryStream ms = new MMO_MemoryStream(buffer))
+            {
+                LoadList(ms);
+                GameEntry.Event.CommonEvent.Dispatch(SysEventId.LoadOneDataTableComplete, DataTableName);
+            }
+
+
+            //GameEntry.DataTable.DataTableManager.TotalTableCount++;
             //1.拿到这个表格的buffer
             //GameEntry.DataTable.DataTableManager.GetDataTableBuffer(DataTableName, (byte[] buffer) =>
             //{

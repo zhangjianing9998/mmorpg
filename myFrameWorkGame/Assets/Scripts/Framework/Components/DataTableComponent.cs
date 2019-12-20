@@ -6,8 +6,6 @@ namespace JIANING
     public class DataTableComponent : JIANINGBaseComponent
     {
 
-
-
         /// <summary>
         /// 表格管理器
         /// </summary>
@@ -36,7 +34,7 @@ namespace JIANING
 
         public override void Shutdown()
         {
-            //DataTableManager
+            DataTableManager.Clear();
 
         }
     }

@@ -9,20 +9,14 @@ namespace JIANING
         public override void OnEnter()
         {
             base.OnEnter();
-            GameEntry.Event.CommonEvent.AddEventListener(
-                SysEventId.LoadDataTableComplete,
-                OnLoadDataTableComplete
-                );
+            GameEntry.Event.CommonEvent.AddEventListener(SysEventId.LoadDataTableComplete, OnLoadDataTableComplete);
 
-            GameEntry.Event.CommonEvent.AddEventListener(
-       SysEventId.LoadOneDataTableComplete,
-       OnLoadOneDataTableComplete
-       );
+            GameEntry.Event.CommonEvent.AddEventListener(SysEventId.LoadOneDataTableComplete, OnLoadOneDataTableComplete);
 
-            GameEntry.DataTable.DataTableManager.LoadDataTableAsync();
+            GameEntry.DataTable.LoadDataTableAsync();
         }
 
-    
+
 
         public override void OnUpdate()
         {
@@ -33,22 +27,16 @@ namespace JIANING
         {
             base.OnLeave();
 
-            GameEntry.Event.CommonEvent.RemoveEventListener(
-             SysEventId.LoadDataTableComplete,
-             OnLoadDataTableComplete
-             );
+            GameEntry.Event.CommonEvent.RemoveEventListener(SysEventId.LoadDataTableComplete, OnLoadDataTableComplete);
 
-            GameEntry.Event.CommonEvent.RemoveEventListener(
-     SysEventId.LoadOneDataTableComplete,
-     OnLoadOneDataTableComplete
-     );
+            GameEntry.Event.CommonEvent.RemoveEventListener(SysEventId.LoadOneDataTableComplete, OnLoadOneDataTableComplete);
 
 
         }
 
         public override void OnDestory()
         {
-            base.OnDestory(); 
+            base.OnDestory();
         }
 
         /// <summary>
