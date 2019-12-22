@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Menu MenuId="637126332449616362" MenuName="test" HasChild="true">
+    <Proto ProtoID="637126332541091369" ProtoCode="6666" ProtoEnName="test" ProtoCnName="新建协议" ProtoDesc="" ProtoCategory="C2MS" IsCSharp="true" IsLua="false">
+      <Attr AttID="637126334455601360" AttType="int" AttEnName="hp" AttCnName="" AttIsLoop="false" AttToLoop="" AttToBool="" AttToBoolResult="false" AttToCus="" AttIsExistsProto="false" />
+    </Proto>
+  </Menu>
+</Root>
