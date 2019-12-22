@@ -19,6 +19,8 @@ public class AssetBundleWindow : EditorWindow
     private string[] arrBuildTarget = { "Windows", "Android", "iOS" };
 
     private int selectBuildTargetIndex = -1; //选择的打包平台索引
+    private BuildTarget target = BuildTarget.iOS;
+    private int buildTargetIndex = 2;
 #if UNITY_STANDALONE_WIN
     private BuildTarget target = BuildTarget.StandaloneWindows;
     private int buildTargetIndex = 0; //打包的平台索引
