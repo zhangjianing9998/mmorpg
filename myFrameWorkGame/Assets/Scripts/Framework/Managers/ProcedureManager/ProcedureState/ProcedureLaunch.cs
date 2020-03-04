@@ -20,7 +20,6 @@ namespace JIANING
             dic["InnerVersion"] = 1001;
             GameEntry.Http.SendData(url,OnWebAccountInit,true,false,dic);
 
-
         }
 
         private void OnWebAccountInit(HttpCallbackArgs args)
@@ -31,7 +30,12 @@ namespace JIANING
 
         public override void OnUpdate()
         {
+            base.OnUpdate();
+            if (Input.GetKeyDown(KeyCode.A))
+            {
 
+                GameEntry.Procedure.ChangeState(ProcedureState.CheckVersion);
+            }
         }
 
         public override void OnLeave()

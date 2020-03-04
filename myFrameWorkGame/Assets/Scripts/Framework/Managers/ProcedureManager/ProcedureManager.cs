@@ -33,8 +33,10 @@ namespace JIANING
         /// <summary>
         /// 当前流程状态机
         /// </summary>
-        public Fsm<ProcedureManager> CurrFsm {
-            get {
+        public Fsm<ProcedureManager> CurrFsm
+        {
+            get
+            {
                 return m_CurrFsm;
             }
         }
@@ -64,7 +66,6 @@ namespace JIANING
 
         public ProcedureManager()
         {
-
         }
 
         /// <summary>
@@ -84,9 +85,10 @@ namespace JIANING
             states[8] = new ProcedureGameLevel();
 
 
-
-
+           
             m_CurrFsm = GameEntry.Fsm.Create(this, states);
+
+
         }
 
         /// <summary>
@@ -95,11 +97,18 @@ namespace JIANING
         /// <param name="state"></param>
         public void ChangeState(ProcedureState state)
         {
+            if (m_CurrFsm == null)
+            {
+                Debug.LogError("m_CurrFsm == null");
+                return;
+            }
+
             m_CurrFsm.ChangeState((byte)state);
         }
 
         public void OnUpdate()
         {
+            
             m_CurrFsm.OnUpdate();
         }
 

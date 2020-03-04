@@ -100,6 +100,9 @@ namespace JIANING
             get;
             private set;
         }
+        /// <summary>
+        /// 场景组件
+        /// </summary>
         public static SceneComponent Scene
         {
             get;
@@ -199,7 +202,6 @@ namespace JIANING
             Event = GetBaseComponent<EventComponent>();
             Time = GetBaseComponent<TimeComponent>();
             Fsm = GetBaseComponent<FsmComponent>();
-            Procedure = GetBaseComponent<ProcedureComponent>();
             DataTable = GetBaseComponent<DataTableComponent>();
             Http = GetBaseComponent<HttpComponent>();
             Data = GetBaseComponent<DataComponent>();
@@ -212,6 +214,7 @@ namespace JIANING
             Resource = GetBaseComponent<ResourceComponent>();
             GameObj = GetBaseComponent<GameObjComponent>();
             Download = GetBaseComponent<DownLoadComponent>();
+            Procedure = GetBaseComponent<ProcedureComponent>();
             Debug.Log("初始化组件完成");
         }
         #endregion

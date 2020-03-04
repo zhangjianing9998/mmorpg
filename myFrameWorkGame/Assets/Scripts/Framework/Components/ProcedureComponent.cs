@@ -38,8 +38,6 @@ namespace JIANING
         }
 
 
-
-
         protected override void OnAwake()
         {
             base.OnAwake();

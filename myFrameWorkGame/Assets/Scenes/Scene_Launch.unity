@@ -237,6 +237,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf47b9d48b5c4efa9e675c6784d3b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxSendCount: 5
+  MaxSendByteCount: 1024
+  MaxReceiveCount: 5
+  HeartbeatInterval: 10
+  PingValue: 0
+  GameServerTime: 0
+  CheckServerTime: 0
 --- !u!1 &150442952
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,21 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ClearInterval: 20
-  m_GameObjectPoolGroups:
-  - PoolId: 1
-    PoolName: role
-    CullDespawned: 1
-    CullAbove: 3
-    CullDelay: 2
-    CullMaxPerpass: 2
-    Pool: {fileID: 0}
-  - PoolId: 2
-    PoolName: monster
-    CullDespawned: 1
-    CullAbove: 3
-    CullDelay: 2
-    CullMaxPerpass: 2
-    Pool: {fileID: 0}
+  m_GameObjectPoolGroups: []
 --- !u!1 &888940150
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1398700458593152, guid: cbf3c8823de0637428ac25c855f63a80, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224426436470056524, guid: cbf3c8823de0637428ac25c855f63a80,
         type: 3}
