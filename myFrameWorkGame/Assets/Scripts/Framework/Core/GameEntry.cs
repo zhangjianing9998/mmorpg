@@ -201,13 +201,13 @@ namespace JIANING
         {
             Event = GetBaseComponent<EventComponent>();
             Time = GetBaseComponent<TimeComponent>();
-            Fsm = GetBaseComponent<FsmComponent>();
             DataTable = GetBaseComponent<DataTableComponent>();
             Http = GetBaseComponent<HttpComponent>();
             Data = GetBaseComponent<DataComponent>();
             Localization = GetBaseComponent<LocalizationComponent>();
             Pool = GetBaseComponent<PoolComponent>();
             Scene = GetBaseComponent<SceneComponent>();
+            Fsm = GetBaseComponent<FsmComponent>();
             Setting = GetBaseComponent<SettingComponent>();
             Socket = GetBaseComponent<SocketComponent>();
             UI = GetBaseComponent<UIComponent>();

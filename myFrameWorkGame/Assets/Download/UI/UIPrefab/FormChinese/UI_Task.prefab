@@ -54,7 +54,6 @@ GameObject:
   - component: {fileID: 224607736219188648}
   - component: {fileID: 222773413592254398}
   - component: {fileID: 114636162659388358}
-  - component: {fileID: 114426535051940446}
   m_Layer: 5
   m_Name: btnReceiveImg
   m_TagString: Untagged
@@ -210,7 +209,7 @@ GameObject:
   - component: {fileID: 224426436470056524}
   - component: {fileID: 223091838929776810}
   - component: {fileID: 114462021579537838}
-  - component: {fileID: 114937311811677834}
+  - component: {fileID: 114833270693199034}
   m_Layer: 5
   m_Name: UI_Task
   m_TagString: Untagged
@@ -499,7 +498,6 @@ GameObject:
   - component: {fileID: 222969694677453928}
   - component: {fileID: 114155278197872404}
   - component: {fileID: 114841613889801906}
-  - component: {fileID: 114448776632517852}
   m_Layer: 5
   m_Name: ItemPrefab
   m_TagString: Untagged
@@ -991,34 +989,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114426535051940446
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146322090445286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b2599ad2ca7224498b015533226f02a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a4603c1d98dd6184db835b2b3219fd4e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_Localization: Button.Receive.Image
 --- !u!114 &114443186263672016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1046,20 +1016,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114448776632517852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1946726942846722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e33df319c5a93bf49b79a84713906675, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  txtName: {fileID: 114774906707794906}
-  imgStatus: {fileID: 114460647765921408}
-  btnDetail: {fileID: 114304559615756552}
 --- !u!114 &114460647765921408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1225,7 +1181,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 114426535051940446}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -1270,7 +1226,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114937311811677834}
+      - m_Target: {fileID: 114833270693199034}
         m_MethodName: Close
         m_Mode: 1
         m_Arguments:
@@ -1470,6 +1426,17 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\u4EFB\u52A1\u540D\u79F0\uFF1A"
   m_Localization: Task.Name
+--- !u!114 &114833270693199034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1398700458593152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc733400ecc8df24a88f95021ca7853f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114837716614329742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1621,30 +1588,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114937311811677834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1398700458593152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 551f57429244f944cace364d12e3143d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LuaComs:
-  - Name: txtTaskName
-    Type: 5
-    Trans: {fileID: 224953463838466522}
-  - Name: txtTaskDesc
-    Type: 5
-    Trans: {fileID: 224360538900302408}
-  - Name: imgMoney
-    Type: 3
-    Trans: {fileID: 224797172808209242}
-  - Name: btnReceiveImg
-    Type: 2
-    Trans: {fileID: 224607736219188648}
 --- !u!222 &222005924039757384
 CanvasRenderer:
   m_ObjectHideFlags: 1

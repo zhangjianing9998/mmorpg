@@ -32,6 +32,10 @@ namespace JIANING
         private UIGroup[] UIGroups;
 
 
+        private UIManager m_UIManager;
+
+        private UILayer m_UILayer;
+
         private Dictionary<byte, UIGroup> m_UIGroupDic;
 
 
@@ -64,6 +68,11 @@ namespace JIANING
                 UIGroup group = UIGroups[i];
                 m_UIGroupDic[group.Id] = group;
             }
+
+            m_UIManager = new UIManager();
+            m_UILayer = new UILayer();
+
+            m_UILayer.Init(UIGroups);
         }
 
         #region UI适配
@@ -115,9 +124,39 @@ namespace JIANING
         }
         #endregion
 
+        /// <summary>
+        /// 打开UI窗体
+        /// </summary>
+        /// <param name="uiFormId"></param>
+        /// <param name="userData"></param>
+        public void OpenUIForm(int uiFormId, object userData = null)
+        {
+            m_UIManager.OpenUIForm(uiFormId, userData);
+        }
+
+        /// <summary>
+        /// 关闭UI窗体
+        /// </summary>
+        /// <param name="formBase"></param>
+        public void CloseUIForm(UIFormBase formBase)
+        {
+            m_UIManager.CloseUIForm(formBase);
+        }
+
+
+        /// <summary>
+        /// 设置层级排序
+        /// </summary>
+        /// <param name="formBase"></param>
+        /// <param name="isAdd"></param>
+        public void SetSortingOrder(UIFormBase formBase, bool isAdd)
+        {
+            m_UILayer.SetSortingOrder(formBase,isAdd);
+        }
+
         public void OnUpdate()
         {
-           
+
         }
 
         public override void Shutdown()

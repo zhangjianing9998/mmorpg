@@ -14,12 +14,13 @@ namespace JIANING
             //访问账号服务器
             string url = GameEntry.Http.RealWebAccountUrl + "";
 
-            Dictionary<string, object> dic = GameEntry.Pool.DequeueClassObject<Dictionary<string, object>>();
-            dic.Clear();
-            dic["ChanneId"] = 0;
-            dic["InnerVersion"] = 1001;
-            GameEntry.Http.SendData(url,OnWebAccountInit,true,false,dic);
+            //Dictionary<string, object> dic = GameEntry.Pool.DequeueClassObject<Dictionary<string, object>>();
+            //dic.Clear();
+            //dic["ChanneId"] = 0;
+            //dic["InnerVersion"] = 1001;
+            //GameEntry.Http.SendData(url,OnWebAccountInit,true,false,dic);
 
+        
         }
 
         private void OnWebAccountInit(HttpCallbackArgs args)
@@ -31,10 +32,10 @@ namespace JIANING
         public override void OnUpdate()
         {
             base.OnUpdate();
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-
                 GameEntry.Procedure.ChangeState(ProcedureState.CheckVersion);
+
             }
         }
 

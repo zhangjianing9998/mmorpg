@@ -15,7 +15,15 @@ namespace JIANING
         /// </summary>
         public ChapterDBModel ChapterDBModel { get; private set; }
 
+        /// <summary>
+        /// 关卡表
+        /// </summary>
         public GameLevelDBModel GameLevelDBModel { get; private set; }
+
+        /// <summary>
+        /// ui表
+        /// </summary>
+        public Sys_UIFormDBModel Sys_UIFormDBModel { get; private set; }
 
         public DataTableManager()
         {
@@ -31,6 +39,7 @@ namespace JIANING
             //每个表都new
             ChapterDBModel = new ChapterDBModel();
             GameLevelDBModel = new GameLevelDBModel();
+            Sys_UIFormDBModel = new Sys_UIFormDBModel();
         }
 
 
@@ -38,6 +47,7 @@ namespace JIANING
         {
             ChapterDBModel.LoadData();
             GameLevelDBModel.LoadData();
+            Sys_UIFormDBModel.LoadData();
 
             //所有表格load完毕
             GameEntry.Event.CommonEvent.Dispatch(SysEventId.LoadDataTableComplete);
@@ -58,6 +68,7 @@ namespace JIANING
             //每个表都clear
             ChapterDBModel.Clear();
             GameLevelDBModel.Clear();
+            Sys_UIFormDBModel.Clear();
         }
 
     }

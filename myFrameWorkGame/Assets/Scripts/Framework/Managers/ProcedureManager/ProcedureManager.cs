@@ -88,7 +88,6 @@ namespace JIANING
            
             m_CurrFsm = GameEntry.Fsm.Create(this, states);
 
-
         }
 
         /// <summary>

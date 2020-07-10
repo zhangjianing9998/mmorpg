@@ -10,6 +10,8 @@ namespace JIANING
             //Debug.Log(GameEntry.Procedure.GetData<int>("code"));
             //Debug.Log(GameEntry.Procedure.GetData<string>("name"));
             Debug.Log("ProcedureCheckVersion Enter");
+
+            GameEntry.Procedure.ChangeState( ProcedureState.Preload);
         }
 
         public override void OnUpdate()
