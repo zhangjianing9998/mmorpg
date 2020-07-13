@@ -36,6 +36,27 @@ namespace JIANING
 
         private UILayer m_UILayer;
 
+        private UIPool m_UIPool;
+
+        [Header("释放间隔（秒）")]
+        [SerializeField]
+        private float m_ClearInterval = 120f;
+
+        /// <summary>
+        /// UI回池后过期时间
+        /// </summary>
+        public float UIExpire = 120f;
+
+        /// <summary>
+        /// 下次运行时间
+        /// </summary>
+        private float m_NextRunTime = 0f;
+
+        /// <summary>
+        /// UI对象池中最大的数量
+        /// </summary>
+        public int UIPoolMaxCount = 5;
+
         private Dictionary<byte, UIGroup> m_UIGroupDic;
 
 
@@ -71,6 +92,8 @@ namespace JIANING
 
             m_UIManager = new UIManager();
             m_UILayer = new UILayer();
+            m_UIPool = new UIPool();
+
 
             m_UILayer.Init(UIGroups);
         }
@@ -131,6 +154,7 @@ namespace JIANING
         /// <param name="userData"></param>
         public void OpenUIForm(int uiFormId, object userData = null)
         {
+            m_UIPool.CheckByOpenUI();
             m_UIManager.OpenUIForm(uiFormId, userData);
         }
 
@@ -143,6 +167,14 @@ namespace JIANING
             m_UIManager.CloseUIForm(formBase);
         }
 
+        /// <summary>
+        /// 根据UIFormId关闭ui
+        /// </summary>
+        /// <param name="uiformId"></param>
+        public void CloseUIForm(int uiformId)
+        {
+            m_UIManager.CloseUIForm(uiformId);
+        }
 
         /// <summary>
         /// 设置层级排序
@@ -151,12 +183,36 @@ namespace JIANING
         /// <param name="isAdd"></param>
         public void SetSortingOrder(UIFormBase formBase, bool isAdd)
         {
-            m_UILayer.SetSortingOrder(formBase,isAdd);
+            m_UILayer.SetSortingOrder(formBase, isAdd);
+        }
+
+        /// <summary>
+        /// 从UI对象池中获取ui
+        /// </summary>
+        /// <param name="uiformId"></param>
+        /// <returns></returns>
+        public UIFormBase Dequeue(int uiformId)
+        {
+            return m_UIPool.Dequeue(uiformId);
+        }
+
+        /// <summary>
+        /// ui回池
+        /// </summary>
+        public void Enqueue(UIFormBase uiformBase)
+        {
+            m_UIPool.Enqueue(uiformBase);
         }
 
         public void OnUpdate()
         {
+            if (Time.time > m_NextRunTime + m_ClearInterval)
+            {
+                m_NextRunTime = Time.time;
 
+                //释放UI对象池
+                m_UIPool.CheckClear();
+            }
         }
 
         public override void Shutdown()

@@ -7,7 +7,7 @@ namespace JIANING
     public class DataTableManager : ManagerBase
     {
 
-        
+
         public int TotalTableCount;
 
         /// <summary>
@@ -25,6 +25,11 @@ namespace JIANING
         /// </summary>
         public Sys_UIFormDBModel Sys_UIFormDBModel { get; private set; }
 
+        /// <summary>
+        /// 语音表
+        /// </summary>
+        public LocalizationDBModel LanguageDBModel { get; private set; }
+
         public DataTableManager()
         {
             InitDBModel();
@@ -40,6 +45,7 @@ namespace JIANING
             ChapterDBModel = new ChapterDBModel();
             GameLevelDBModel = new GameLevelDBModel();
             Sys_UIFormDBModel = new Sys_UIFormDBModel();
+            LanguageDBModel = new LocalizationDBModel();
         }
 
 
@@ -48,7 +54,7 @@ namespace JIANING
             ChapterDBModel.LoadData();
             GameLevelDBModel.LoadData();
             Sys_UIFormDBModel.LoadData();
-
+            LanguageDBModel.LoadData();
             //所有表格load完毕
             GameEntry.Event.CommonEvent.Dispatch(SysEventId.LoadDataTableComplete);
         }
@@ -69,6 +75,7 @@ namespace JIANING
             ChapterDBModel.Clear();
             GameLevelDBModel.Clear();
             Sys_UIFormDBModel.Clear();
+            LanguageDBModel.Clear();
         }
 
     }

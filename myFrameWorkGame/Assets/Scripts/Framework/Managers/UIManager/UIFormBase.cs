@@ -124,8 +124,10 @@ namespace JIANING
 
             OnClose();
 
-            //先销毁 以后改成对象池
-            Destroy(gameObject);
+            CloseTime = Time.time;
+
+            //对象池回池
+            GameEntry.UI.Enqueue(this) ;
         }
 
         private void OnDestory()
